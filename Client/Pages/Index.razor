@@ -7,6 +7,18 @@
 
 <p>Welcome to your new app.</p>
 
+<p>@this.message</p>
+
 @code {
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "name")]
+    public string? Name { get; set; }
+
+    private string? message;
     
+    protected override async Task OnInitializedAsync()
+    {
+        this.message = await this.HttpClient.GetStringAsync(
+            $"/api/Message{(string.IsNullOrWhiteSpace(this.Name) ? string.Empty : $"?name={this.Name}")}");
+    }
 }
