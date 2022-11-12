@@ -11,8 +11,9 @@ env:
   DOTNET_VERSION: '6.0.x' # set this to the dotnet version to use
 
 jobs:
-  build-and-deploy:
+  azure-functions-app:
     runs-on: ubuntu-latest
+    name: Build and Deploy Azure Functions App
     steps:
       - name: 'Checkout GitHub Action'
         uses: actions/checkout@v2
@@ -38,9 +39,9 @@ jobs:
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8F087977EE4F4EDBAC6C6F9971546ED8 }}
 
-  build_and_deploy_job:
+  azure-static-web-app:
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+    name: Build and Deploy Azure Static Web App
     steps:
       - name: 'Checkout GitHub Action'
         uses: actions/checkout@v2
