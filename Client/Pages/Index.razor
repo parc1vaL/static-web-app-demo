@@ -7,13 +7,6 @@
 
 <p>Welcome to your new app.</p>
 
-<p>@this.message</p>
-
 @code {
-    private string message = null!;
-
-    protected override async Task OnInitializedAsync()
-    {
-        this.message = await this.HttpClient.GetStringAsync("/api/Message?name=Patrick");
-    }
+    
 }
