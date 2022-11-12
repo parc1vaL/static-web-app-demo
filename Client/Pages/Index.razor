@@ -14,6 +14,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        this.message = await this.HttpClient.GetStringAsync("/api/Message");
+        this.message = await this.HttpClient.GetStringAsync("/api/Message?name=Patrick");
     }
 }
