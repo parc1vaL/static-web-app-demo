@@ -11,12 +11,12 @@ public static class Message
 {
     [FunctionName("Message")]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
         ILogger log)
     {        
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        string name = req.Query["name"];
+        string? name = req.Query["name"];
 
         var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
         dynamic data = JsonConvert.DeserializeObject(requestBody);
